@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% load static %} {% block content %}
+<div class="container d-flex flex-row h-100">
+    <div class="col-md-6 p-0">
+        <img src="https://img.freepik.com/free-photo/fraud-word-with-letter-magnifying-glass-top-view_23-2148546896.jpg?t=st=1727836786~exp=1727840386~hmac=ce8cc93aee8bdf3e1d538b7ae90002e9fb3f903876e1cc3bb5397e024079e58c&w=740" alt="Signup Background"
+            class="w-100 h-100 object-fit-cover" />
+    </div>
+    <div class="col-md-6 p-5 bg-white">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p class="h4 text-center text-dark py-4">Sign Up</p>
+            <div class="form-group mt-1">
+                {% if messages %}
+                <div class="messages">
+                    {% for message in messages %}
+                    <div class="alert {{ message.tags }}"> {{ message }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            <div class="md-form">
+                <label for="defaultForm-username" class="text-dark">Username</label>
+                <input type="text" id="defaultForm-username" class="form-control" name="username" required>
+            </div><br>
+            <div class="md-form">
+                <label class="text-dark" for="defaultForm-email">Your email</label>
+                <input type="email" id="defaultForm-email" class="form-control" name="email" required>
+            </div><br>
+            <div class="md-form">
+                <label class="text-dark" for="defaultForm-pass">Your password</label>
+                <input type="password" id="defaultForm-pass" class="form-control" name="password1" required>
+            </div><br>
+            <div class="md-form">
+                <label class="text-dark" for="defaultForm-pass">Confirm password</label>
+                <input type="password" id="defaultForm-pass" class="form-control" name="password2" required>
+            </div>
+            <div class="text-center py-4 mt-3">
+                <button class="btn btn-primary" type="submit">Sign Up</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

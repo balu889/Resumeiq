@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container my-5">
+    <h2 class="text-center mb-4 text-white">Resume Analysis Results</h2>
+
+    <h4 class="text-white">Extracted Data from Resume</h4>
+    <ul class="text-white">
+        <li><strong>Skills:</strong> {{ resume_data.skills }}</li>
+        <li><strong>Experience:</strong> {{ resume_data.experience }}</li>
+        <li><strong>Education:</strong> {{ resume_data.education }}</li>
+        <li><strong>Entities:</strong> {{ resume_data.entities }}</li>
+    </ul>
+
+    <h4 class="text-white">Resume Analysis Scores</h4>
+    <p class="text-white"><strong>Total Score:</strong> {{ analysis_results.total_score }}%</p>
+
+    <!-- Embed Plotly chart -->
+    <div class="mt-4">
+        {{ plot_div|safe }}
+    </div>
+
+    <h5 class="mt-4 text-white">Detailed Scores</h5>
+    <ul class="text-white">
+        <li><strong>Entity Match Score:</strong> {{ analysis_results.entity_score }}%</li>
+        <li><strong>Skills Match Score:</strong> {{ analysis_results.skills_score }}%</li>
+        <li><strong>Experience Match Score:</strong> {{ analysis_results.experience_score }}%</li>
+        <li><strong>Education Match Score:</strong> {{ analysis_results.education_score }}%</li>
+    </ul>
+
+    <h5 class="mt-4 text-white">Feedback</h5>
+    <p class="text-white"><strong>{{ feedback }}</strong></p>
+
+    <a href="{% url 'analyze_resume' %}" class="btn btn-success mt-4">Go Back</a>
+</div>
+
+{% endblock %}

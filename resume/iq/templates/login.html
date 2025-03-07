@@ -1,0 +1,316 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <style>
+.main-wrapper {
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+	font-size: 14px;
+	font-family: "Helvetica Nueue",Arial,Verdana,sans-serif;
+}
+
+/* entire container, keeps perspective */
+.card-container {
+    perspective: 500px;
+    margin-bottom: 30px;
+}
+/* flip the pane when hovered */
+.card-container.rotate .card{
+    transform: rotateY( 180deg );
+}
+/* flip speed goes here */
+.card {
+    transition: transform .85s;
+    transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.login-form, .signup-form {
+    backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #FFF;
+    box-shadow: 0 1px 3px 2px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+/* front pane, placed above back */
+.login-form {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.signup-form {
+    transform: rotateY(180deg);
+    z-index: 3;
+}
+
+/*        Style       */
+.card-container{
+    width: 300px;
+    margin: 0 auto;
+}
+
+.card{
+    background: #FFFFFF;
+    border-radius: 4px;
+    color: #444444;
+}
+
+.card-container, .login-form, .signup-form {
+	height: 420px;
+	border-radius: 4px;
+}
+.login-form, .signup-form {
+    width: 100%;
+    height: 420px;
+    border-radius: 4px;
+}
+.card .header {
+    margin: 10px;
+    padding: 10px 0 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #EEEEEE;
+    color: #999999;
+    text-transform: uppercase;
+    font-weight: bold;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, 0.14), 0 6px 30px 5px rgba(0, 0, 0, 0.12), 0 8px 10px -7px rgba(0, 0, 0, 0.2);
+}
+.card .content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    flex: 1;
+}
+.card .footer {
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    padding: 5px 0 5px 0;
+    text-align: center;
+}
+
+.btn {
+    border: none;
+    border-radius: 2px;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 16px;
+    font-family: inherit;
+    font-weight: 100;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    transition: .4s;
+}
+
+.btn-rotate {
+    color: #212529;
+    background-color: #ddd;
+}
+
+.btn-rotate:hover {
+    color: #212529;
+    background-color: #ccc;
+}
+
+.btn-rotate:focus{
+    outline: none;
+    border: none;
+}
+
+.btn-submit {
+    width: 50%;
+    margin: 0 auto;
+    border-radius: 20px;
+    text-transform: uppercase;
+    color: #212529;
+    font-weight: bold;
+    background-color: #809BE0;
+}
+
+.btn-submit:hover {
+    color: #212529;
+    background-color: #4D8CDE;
+}
+
+.btn-submit:focus{
+    outline: none;
+    border: none;
+}
+
+form{
+    width: 100%;
+}
+
+.input-field{
+    position: relative;
+    width: 90%;
+    margin: 20px auto;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-field input{ 
+    width: 100%;
+    max-height: 20px;
+    padding: 20px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    background-color: #A2B2DE;
+    color: #fff;
+    transition: .4s;
+}
+
+::-webkit-input-placeholder {
+  color: #fff;
+}
+::-moz-placeholder {
+  color: #fff;
+}
+:-ms-input-placeholder {
+  color: #fff;
+}
+::-ms-input-placeholder {
+  color: #fff;
+}
+::placeholder {
+  color: #fff;
+}
+
+.input-field input:focus{
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+}
+
+.see-password{
+    position: absolute;
+    right: 10px;
+    padding-bottom: 5px;
+    cursor: pointer;
+}
+
+.group input{
+    padding-right: 40px;
+}
+
+    </style>
+
+    <div class="main-wrapper">
+    <div class="form-group">
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div class="alert {{ message.tags }}"> {{ message }}</div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+        <div class="card-container">
+            <div class="card">
+                <div class="login-form">
+                    <div class="header">Log in</div>
+                    <div class="content">
+                        <form action="../login/" method="post">
+                            {% csrf_token %}
+                            <div class="input-field">
+                                <input type="text" name="username" placeholder="Username">
+                            </div>
+                            <div class="input-field">
+                                <input type="password" name="password" placeholder="Password">
+                            </div>
+                            <div class="input-field">
+                                <button class="btn btn-submit" type="submit">Log in</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer">
+                        Don't have an account ?
+                        <button class="btn btn-rotate" id="btn-signup">Sign up</button>
+                    </div>
+                </div> <!-- end login-form panel -->
+                <div class="signup-form">
+                    <div class="header">Sign up</div>
+                    <div class="content">
+                        <form action="../signup/" method="post">
+                            {% csrf_token %}
+                            <div class="input-field">
+                                <input type="text" name="username" placeholder="Username">
+                            </div>
+                            <div class="input-field">
+                                <input type="email" name="email" placeholder="Email">
+                            </div>
+                            <div class="input-field group">
+                                <input type="password" name="password1" placeholder="Password">
+                                <span class="see-password">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                                        <path d="M0 0h24v24H0z" fill="none" />
+                                        <path fill="#fff"
+                                            d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                                    </svg>
+                                </span>
+                            </div>
+                            <div class="input-field">
+                                <button class="btn btn-submit" type="submit">Signup</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer">
+                        <button class="btn btn-rotate" id="btn-login">I have an account</button>
+                    </div>
+                </div> <!-- end signup-form panel -->
+            </div> <!-- end card -->
+        </div> <!-- end card-container -->
+    </div>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+
+                const rotateCard = () => {
+                    const cardContainer = document.querySelector('.card-container')
+                    cardContainer.classList.toggle('rotate')
+                }
+
+                const btnSignup = document.querySelector('#btn-signup'),
+                    btnLogin = document.querySelector('#btn-login')
+
+                btnSignup.addEventListener('click', rotateCard)
+                btnLogin.addEventListener('click', rotateCard)
+
+                /*See passwod*/
+                const seePassword = () => {
+                    const seePwdIcon = document.querySelector('.see-password'),
+                        pwdInput = document.querySelector('.group input')
+
+                    seePwdIcon.addEventListener('mousedown', () => {
+                        pwdInput.type = 'text'
+                    })
+
+                    seePwdIcon.addEventListener('mouseup', () => {
+                        pwdInput.type = 'password'
+                    })
+
+                    seePwdIcon.addEventListener('mouseover', () => {
+                        pwdInput.type = 'password'
+                    })
+                }
+
+                seePassword()
+            })
+    </script>
+{% endblock %}

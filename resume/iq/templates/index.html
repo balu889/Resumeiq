@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4 mb-4 animate__animated text-white animate__fadeInDown">Welcome to ResumeIQ</h1>
+            <p class="lead animate__animated text-white animate__fadeInUp">Optimize your resume with advanced analysis and
+                tailored suggestions to land your dream job. ResumeIQ helps you align your resume with job requirements,
+                boosting your chances of success.</p>
+        </div>
+    </div>
+
+
+    <div id="carouselExampleIndicators" class="carousel slide" data-mdb-ride="carousel" data-mdb-carousel-init>
+        <div class="carousel-indicators">
+            <button type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-mdb-target="#carouselExampleIndicators" data-mdb-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://media.licdn.com/dms/image/v2/C5612AQFisKpN-qhnRA/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1650604475042?e=2147483647&v=beta&t=pBU8FFt0aielxyZuKbjS1C5ZX_Hj70pJDErakfFkRyY" style="height: 450px; width: 100%;" class="d-block" alt="Wild Landscape" />
+            </div>
+            <div class="carousel-item">
+                <img src="https://static.jobscan.co/blog/uploads/533x340_01_new.png" style="height: 450px; width: 100%;" class="d-block" alt="Camera" />
+            </div>
+            <div class="carousel-item">
+                <img src="https://media.licdn.com/dms/image/D4D12AQEyRPpe3xAkYw/article-cover_image-shrink_600_2000/0/1721644817131?e=2147483647&v=beta&t=e0RGb9W6i00WIiwk6-vhmdUgiUNEA5BqzW4F3Pe3wSA" style="height: 450px; width: 100%;" class="d-block" alt="Exotic Fruits" />
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-mdb-target="#carouselExampleIndicators"
+            data-mdb-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-mdb-target="#carouselExampleIndicators"
+            data-mdb-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+
+<!-- Feature Section with Animation on Scroll -->
+<div class="row mt-5">
+    <div class="col-md-4 mb-4" data-aos="fade-right" data-aos-duration="1000">
+        <div class="card text-center h-100">
+            <div class="card-body">
+                <i class="fas fa-file-alt fa-3x mb-3 text-primary"></i>
+                <h3 class="card-title">Resume Optimization</h3>
+                <p class="card-text">ResumeIQ analyzes your resume to ensure it is optimized for the job you're applying
+                    to, improving your chances of getting noticed by recruiters.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-duration="1000">
+        <div class="card text-center h-100">
+            <div class="card-body">
+                <i class="fas fa-search fa-3x mb-3 text-primary"></i>
+                <h3 class="card-title">Keyword Matching</h3>
+                <p class="card-text">Our tool highlights missing or mismatched keywords between your resume and the job
+                    description, helping you fine-tune your application for ATS systems.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-4" data-aos="fade-left" data-aos-duration="1000">
+        <div class="card text-center h-100">
+            <div class="card-body">
+                <i class="fas fa-chart-bar fa-3x mb-3 text-primary"></i>
+                <h3 class="card-title">Detailed Analysis</h3>
+                <p class="card-text">ResumeIQ provides an in-depth analysis of your resume, offering actionable
+                    suggestions to improve skills alignment, formatting, and content relevance.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Key Features Section -->
+<div class="row mt-5">
+    <div class="col-12 text-center">
+        <h2 class="mb-4 text-white" data-aos="zoom-in">Key Features</h2>
+    </div>
+
+    <div class="col-md-6 mb-4 text-white" data-aos="fade-right" data-aos-delay="100">
+        <div class="feature-box d-flex">
+            <i class="fas fa-check-circle fa-3x text-primary mr-4 text-white"></i>
+            <div>
+                <h4>ATS Optimization</h4>
+                <p>Our tool ensures your resume is optimized to pass through Applicant Tracking Systems (ATS) by
+                    analyzing and suggesting necessary keyword adjustments.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4 text-white" data-aos="fade-left" data-aos-delay="100">
+        <div class="feature-box d-flex">
+            <i class="fas fa-tasks fa-3x text-primary mr-4 text-white"></i>
+            <div>
+                <h4>Job-Specific Tailoring</h4>
+                <p>Upload the job description, and ResumeIQ will tailor its analysis to the specific role, ensuring your
+                    resume is aligned with what hiring managers are looking for.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4 text-white" data-aos="fade-right" data-aos-delay="200">
+        <div class="feature-box d-flex">
+            <i class="fas fa-user-graduate fa-3x text-primary mr-4 text-white"></i>
+            <div>
+                <h4>Suitable for All Experience Levels</h4>
+                <p>Whether you're a recent graduate or a seasoned professional, ResumeIQ provides tailored feedback to
+                    enhance your resume for the role you want.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4 text-white" data-aos="fade-left" data-aos-delay="200">
+        <div class="feature-box d-flex">
+            <i class="fas fa-shield-alt fa-3x text-primary mr-4 text-white"></i>
+            <div>
+                <h4>Formatting Assistance</h4>
+                <p>ResumeIQ offers formatting suggestions to ensure your resume is both visually appealing and easily
+                    scannable by both ATS and hiring managers.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- AOS Initialization Script -->
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+    AOS.init();
+</script>
+{% endblock %}
